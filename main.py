@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from typing import Optional
 from routes import v1
+from db.database import Base, engine
 import uvicorn
 
 description = """
@@ -13,6 +14,7 @@ description = """
 """
 
 def create_app():
+    Base.metadata.create_all(bind=engine)
     app = FastAPI(title="기본 api", description=description, docs_url="/docs", redoc_url=None, swagger_ui_parameters={"defaultModelsExpandDepth": -1})
     v1_app = FastAPI(title="v1 api", description=description, docs_url="/docs", redoc_url=None, swagger_ui_parameters={"defaultModelsExpandDepth": -1})
 
