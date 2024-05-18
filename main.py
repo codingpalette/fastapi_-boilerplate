@@ -2,9 +2,16 @@ from fastapi import FastAPI
 from typing import Optional
 import uvicorn
 
+description = """
+<div>
+    -------------------------------<br>
+    <a href="/docs">[ 기본api ]</a><br>
+    -------------------------------
+</div>
+"""
 
 def create_app():
-    app = FastAPI(title="기본api")
+    app = FastAPI(title="기본 api", description=description, docs_url="/docs", redoc_url=None, swagger_ui_parameters={"defaultModelsExpandDepth": -1})
 
     @app.get("/")
     def read_root():
