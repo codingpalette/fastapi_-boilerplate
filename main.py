@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from typing import Optional
 from routes import v1
-from db.database import Base, engine
-import uvicorn, logging_config
+from core.database import Base, engine
+import uvicorn
 
 description = """
 <div>

@@ -1,10 +1,17 @@
-from sqlalchemy import Column, String, Integer, DateTime, func
-from sqlalchemy.orm import relationship
-from db.database import Base
+from sqlalchemy import Column, String, Integer
+from core.database import Base
+from pydantic import BaseModel
 
-class Posts(Base):
-    __tablename__ = 'posts'
 
-    id = Column(Integer, primary_key=True, index=True)
-    title = Column(String, index=True)
-    content = Column(String)
+class CreatePost(BaseModel):
+    title: str
+    content: str
+
+
+# class PostResponse(BaseModel):
+#     id: int
+#     title: str
+#     content: str
+#
+#     class Config:
+#         orm_mode = True
